@@ -1,0 +1,37 @@
+<div class="jumbotron">
+    <center>
+        <h1>To Do List Organizer</h1>
+        <form class="create-update-form" action="/" method="POST">
+            <div class="form-group">
+                <label for="td">To DO:</label>
+                <input type="text" id="todo" name="item">
+                <label for="td">Completed (0 for false, 1 for true):</label>
+                <input type="text" id="com" name="completed">
+            </div>
+            <button type="submit">Add To-Do Item</button>
+        </form>
+    </center>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Not Completed</h2>
+            <ul id="list">
+                {{#each toDo}}
+                <li>
+                    <p>Item: {{this.item}}</p>
+                    <p>Completed: {{this.completed}}</p>
+                    <p>Date: {{this.date}}</p>
+                    <form action="/{{this.id}}?_method=PUT" method="POST">
+                        <input type="hidden" name="id" value="{{this.id}}">
+                        <button type="submit">Completed</button>
+                    </form>
+                </li>
+                {{/each}}
+            </ul>
+        </div>
+        <div class="col-md-6">
+            <h2>Completed</h2>
+        </div>
+    </div>
+</div>
