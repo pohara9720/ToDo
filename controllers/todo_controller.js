@@ -18,9 +18,8 @@ router.get("/", function(req, res) {
 });
 
 router.post("/", function(req, res) {
-    toDo.insertOne([
-        req.body.table ,req.body.item, req.body.completed, req.body.date
-    ], function() {
+    console.log('made it ', req.body);
+    toDo.insertOne(req.body.item, function() {
         res.redirect("/");
     });
 });
