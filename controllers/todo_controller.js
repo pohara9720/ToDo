@@ -19,14 +19,15 @@ router.get("/", function(req, res) {
 
 router.post("/", function(req, res) {
     console.log('made it ', req.body);
-    toDo.insertOne(req.body.item, function() {
+    toDo.insertOne(req.body, function() {
         res.redirect("/");
     });
 });
 
 router.put("/:id", function(req, res) {
     var condition = "id = " + req.body.id;
-
+    console.log(req);
+    console.log(res);
     console.log("condition", condition);
 
     toDo.updateOne({

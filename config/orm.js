@@ -10,9 +10,9 @@ var orm = {
 
     },
 
-    insertOne: function(table,val1, val2, val3,cb) {
+    insertOne: function(table, item, completed, date, cb) {
         var queryString = "INSERT INTO ??(item,completed,date) VALUES (?,?,?)";
-        connection.query(queryString, [table,val1,val2,val3], function(err, result) {
+        connection.query(queryString, [table, item, completed, date], function(err, result) {
             cb(result);
 
         });
